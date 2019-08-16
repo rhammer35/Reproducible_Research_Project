@@ -18,18 +18,18 @@ When you click the **Knit** button a document will be generated that includes bo
 
 ### Data Processing
 
-You can also embed plots, for example:
+The first step in processing the data is to load R packages that will assist in the analysis, shown below.
 
 ```{r load packages, warning=FALSE, message=FALSE}
 library(ggplot2)
 library(tidyverse)
 library(knitr)
 ```
-
+Next, the raw data must be loaded into R. It can be imported using the file url from the course website and the download.file() function in R. This particular data comes in zip form; the unzip() function in R takes care of expanding the files.
 ```{r get data}
 fileurl <- "https://d396qusza40orc.cloudfront.net/repdata%2Fdata%2FStormData.csv.bz2"
-download.file(fileurl, destfile = "weatherdataset.zip")
-unzip("weatherdataset.zip")
+download.file(fileurl, destfile = "weatherdataset.csv.bz2")
+weatherdata <- read.csv("weatherdataset.csv.bz2")
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
